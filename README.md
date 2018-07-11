@@ -2,6 +2,9 @@
 
 <p align="center">
 <a href="https://github.com/XpycT/screenfull-es6"><img src="https://travis-ci.org/XpycT/screenfull-es6.svg?branch=master" alt="Build"></a>
+<a href="https://www.npmjs.com/package/screenfull-es6"><img src="https://img.shields.io/npm/dt/screenfull-es6.svg" alt="Download"></a>
+<a href="https://www.npmjs.com/package/screenfull-es6"><img src="https://img.shields.io/npm/v/screenfull-es6.svg" alt="Version"></a>
+<a href="https://www.npmjs.com/package/screenfull-es6"><img src="https://img.shields.io/npm/l/screenfull-es6.svg" alt="License"></a>
 </p>
 
 > ScreenFull-ES6 based on [screenfull.js](https://github.com/sindresorhus/screenfull.js)
