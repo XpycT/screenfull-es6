@@ -12,7 +12,7 @@
       <div class="row justify-content-center">
         <div class="col col-md-4" >
           <div class="card mb-4 shadow " ref="card">
-            <img id="demo-img" class="card-img-top" src="https://sindresorhus.com/unicorn" alt="Card image cap">
+            <img class="card-img-top" src="https://sindresorhus.com/unicorn" ref="image" @click="toggleImage">
             <div class="card-body">
               <h5 class="card-title">Try out the Fullscreen API.</h5>
               <p class="card-text">Click the image to make it fullscreen</p>
@@ -49,6 +49,9 @@
     mounted() {
     },
     computed: {
+      /**
+       * @return {boolean}
+       */
       ScreenFullEnabled() {
         return  !!ScreenFull.enabled;
       }
@@ -62,6 +65,9 @@
       },
       toggle(){
         ScreenFull.toggle(this.$refs.card);
+      },
+      toggleImage(){
+        ScreenFull.toggle(this.$refs.image);
       },
       requestDocument(){
         ScreenFull.request();
