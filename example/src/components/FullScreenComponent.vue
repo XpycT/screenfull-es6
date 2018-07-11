@@ -42,7 +42,7 @@
 <script>
   import ScreenFull from '../../../';
   export default {
-    name: 'HelloWorld',
+    name: 'FullScreenComponent',
     data() {
       return {}
     },

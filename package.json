@@ -32,6 +32,11 @@
     "fullscreen",
     "screenfull"
   ],
+  "files": [
+    "src",
+    "dist",
+    "index.html"
+  ],
   "author": "Aleksandr Tar <XpycT.TOP@gmail.com>",
   "license": "MIT",
   "bugs": {

@@ -1,11 +1,11 @@
 <template>
   <main role="main">
-    <HelloWorld/>
+    <FullScreenComponent/>
   </main>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from './components/FullScreenComponent.vue'
 
 export default {
   name: 'app',
