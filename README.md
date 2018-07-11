@@ -1,10 +1,10 @@
-# ScreenFull ES6
+# ScreenFull-ES6
 
 <p align="center">
 <a href="https://github.com/XpycT/screenfull-es6"><img src="https://travis-ci.org/XpycT/screenfull-es6.svg?branch=master" alt="Build"></a>
 </p>
 
-> ScreenFull ES6, based on [screenfull.js](https://github.com/sindresorhus/screenfull.js)
+> ScreenFull-ES6 based on [screenfull.js](https://github.com/sindresorhus/screenfull.js)
 
 
 ## Overview
