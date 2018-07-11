@@ -6,61 +6,115 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>ScreenFull-ES6 Demo</title>
-  <meta itemprop="description" content="Wrapper for cross-browser usage of the JavaScript Fullscreen API, which lets you bring the page or any element into fullscreen.">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
-    crossorigin="anonymous">
+  <meta itemprop="description"
+        content="Wrapper for cross-browser usage of the JavaScript Fullscreen API, which lets you bring the page or any element into fullscreen.">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
 </head>
-
+<style>
+  #demo-img {
+    cursor: pointer;
+  }
+  #card {
+    width:340px;
+  }
+</style>
 <body>
 
-  <main role="main">
-    <section class="jumbotron text-center">
-      <div class="container">
-        <h1 class="jumbotron-heading">ScreenFull-ES6 Demo</h1>
-        <p class="lead text-muted">Simple wrapper for cross-browser usage of the JavaScript
-          <a href="https://developer.mozilla.org/en/DOM/Using_full-screen_mode">Fullscreen API</a>, which lets you bring the page or any element into fullscreen.</p>
-      </div>
-    </section>
-    <section class="container">
-      <div class="row justify-content-center">
-        <div class="col col-md-4">
-          <div class="card mb-4 box-shadow">
-            <img class="card-img-top" src="https://sindresorhus.com/unicorn" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">Try out the Fullscreen API.</h5>
-              <p class="card-text">Click the image to make it fullscreen</p>
-              <section>
-                <ul>
-                  <li id="supported"></li>
-                  <li id="status"></li>
-                  <li id="element"></li>
-                </ul>
-              </section>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-primary">Request</button>
-                  <button type="button" class="btn btn-sm btn-secondary">Exit</button>
-                  <button type="button" class="btn btn-sm btn-success">Toggle</button>
-                  <button type="button" class="btn btn-sm btn-info">Request document</button>
-                </div>
+<main role="main">
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">ScreenFull-ES6 Demo</h1>
+      <p class="lead text-muted">Simple wrapper for cross-browser usage of the JavaScript
+        <a href="https://developer.mozilla.org/en/DOM/Using_full-screen_mode">Fullscreen API</a>, which lets you bring
+        the page or any element into fullscreen.</p>
+    </div>
+  </section>
+  <section class="container">
+    <div class="row justify-content-center">
+      <div class="col col-md-4" >
+        <div class="card mb-4 shadow " id="card">
+          <img id="demo-img" class="card-img-top" src="https://sindresorhus.com/unicorn" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Try out the Fullscreen API.</h5>
+            <p class="card-text">Click the image to make it fullscreen</p>
+            <section>
+              <ul>
+                <li id="supported"></li>
+                <li id="status"></li>
+                <li id="element"></li>
+              </ul>
+            </section>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button id="request" type="button" class="btn btn-sm btn-primary">Request</button>
+                <button id="exit" type="button" class="btn btn-sm btn-secondary">Exit</button>
+                <button id="toggle" type="button" class="btn btn-sm btn-success">Toggle</button>
+                <button id="request2" type="button" class="btn btn-sm btn-info">Request document</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  </main>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script src="./dist/screenfull-es6.browser.js"></script>
-  <script type="text/javascript">
-    $(function () {
-      $('#supported').text('Supported/allowed: ' + !!ScreenFull.enabled);
- if (!ScreenFull.enabled) {
-        return false;
-      }
+      <div class="col">
+        <div class="card shadow ">
+          <div class="card-body">
+            <h5 class="card-title">Usage Example</h5>
+            <code class="card-text">
+              <pre language="javascript">
+
+              </pre>
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="./dist/screenfull-es6.browser.min.js"></script>
+<script type="text/javascript">
+  $(function () {
+    $('#supported').text('Supported/allowed: ' + !!ScreenFull.enabled);
+    if (!ScreenFull.enabled) {
+      return false;
+    }
+    $('#request').click(function () {
+      ScreenFull.request($('#card')[0]);
+      // Does not require jQuery. Can be used like this too:
+      // screenfull.request(document.getElementById('container'));
+    });
+    $('#exit').click(function () {
+      ScreenFull.exit();
+    });
+    $('#toggle').click(function () {
+      ScreenFull.toggle($('#card')[0]);
+    });
+    $('#request2').click(function () {
+      ScreenFull.request();
+    });
+    $('#demo-img').click(function () {
+      ScreenFull.toggle(this);
     });
 
-  </script>
+    function fullscreenchange() {
+      var elem = ScreenFull.element;
+      $('#status').text('Is fullscreen: ' + ScreenFull.isFullscreen);
+      if (elem) {
+        $('#element').text('Element: ' + elem.localName + (elem.id ? '#' + elem.id : ''));
+      }
+      if (!ScreenFull.isFullscreen) {
+        $('#external-iframe').remove();
+        document.body.style.overflow = 'auto';
+      }
+    }
+    ScreenFull.on('change', fullscreenchange);
+    // Set the initial values
+    fullscreenchange();
+  });
+
+</script>
 </body>
 
 </html>

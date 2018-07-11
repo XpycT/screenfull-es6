@@ -1,4 +1,4 @@
-class ScreenFull {
+const ScreenFull = {
 
   fn(key) {
     let val;
@@ -64,26 +64,25 @@ class ScreenFull {
     }
 
     return false;
-  }
-
+  },
   get enabled() {
     return Boolean(document[this.fn('fullscreenEnabled')]);
-  }
+  },
 
   get element() {
     return document[this.fn('fullscreenElement')];
-  }
+  },
 
   get isFullscreen() {
     return Boolean(document[this.fn('fullscreenElement')]);
-  }
+  },
 
   get eventNameMap() {
     return {
       change: this.fn('fullscreenchange'),
       error: this.fn('fullscreenerror')
     }
-  }
+  },
 
   request(elem) {
     let request = this.fn('requestFullscreen');
@@ -100,11 +99,11 @@ class ScreenFull {
       let keyboardAllowed = typeof Element !== 'undefined' && 'ALLOW_KEYBOARD_INPUT' in Element;
       elem[request](keyboardAllowed && Element.ALLOW_KEYBOARD_INPUT);
     }
-  }
+  },
 
   exit() {
-    this.document[this.fn('exitFullscreen')]();
-  }
+    document[this.fn('exitFullscreen')]();
+  },
 
   toggle(element) {
     if (this.isFullscreen) {
@@ -112,21 +111,21 @@ class ScreenFull {
     } else {
       this.request(element);
     }
-  }
+  },
 
   onchange(cb) {
     this.on('change', cb);
-  }
+  },
   onerror(cb) {
     this.on('error', cb);
-  }
+  },
 
   on(event, cb) {
     var eventName = this.eventNameMap[event];
     if (eventName) {
       document.addEventListener(eventName, cb, false);
     }
-  }
+  },
 
   off(event, cb) {
     var eventName = this.eventNameMap[event];
@@ -134,8 +133,6 @@ class ScreenFull {
       document.removeEventListener(eventName, cb, false);
     }
   }
-}
+};
 
-export {
-  ScreenFull
-}
+export default ScreenFull;

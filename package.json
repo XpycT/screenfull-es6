@@ -6,12 +6,12 @@
   "module": "dist/screenfull-es6.esm.js",
   "jsnext:main": "dist/screenfull-es6.esm.js",
   "unpkg": "dist/screenfull-es6.min.js",
-  "commonjs": "dist/screenfull-es6.common.js",
   "iife": "dist/screenfull-es6.browser.js",
+  "iifemin": "dist/screenfull-es6.browser.min.js",
   "scripts": {
     "serve": "http-server .",
     "prebuild": "shx rm -rf dist",
-    "build": "rollup -c"
+    "build": "git rev-parse HEAD > .commithash && rollup -c"
   },
   "devDependencies": {
     "http-server": "^0.11.1",
