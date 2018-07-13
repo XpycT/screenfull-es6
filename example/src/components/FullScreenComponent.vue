@@ -19,8 +19,8 @@
               <section>
                 <ul>
                   <li id="supported">Supported/allowed: {{ScreenFullEnabled}}</li>
-                  <li id="status"></li>
-                  <li id="element"></li>
+                  <li id="status">Is fullscreen: {{fullscreen}}</li>
+                  <li id="element">Element: {{element}}</li>
                 </ul>
               </section>
               <div class="d-flex justify-content-between align-items-center">
@@ -44,9 +44,13 @@
   export default {
     name: 'FullScreenComponent',
     data() {
-      return {}
+      return {
+        element: '',
+        fullscreen: false
+      }
     },
     mounted() {
+      ScreenFull.on('change', this.fullscreenChange);
     },
     computed: {
       /**
@@ -71,6 +75,12 @@
       },
       requestDocument(){
         ScreenFull.request();
+      },
+      fullscreenChange(){
+        this.fullscreen = ScreenFull.isFullscreen;
+
+        let elem = ScreenFull.element;
+        this.element = elem.localName + (elem.id ? '#' + elem.id : '');
       }
     }
   }
