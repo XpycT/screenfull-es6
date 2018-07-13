@@ -20,7 +20,7 @@ Simple wrapper for cross-browser usage of the JavaScript [Fullscreen API](https:
 ```
 $ npm install --save screenfull-es6
 ```
-Also available on [unpkg.com](https://unpkg.com/screenfull-es6).
+Also available on [unpkg.com](https://unpkg.com/screenfull-es6) or [jsdelivr](https://cdn.jsdelivr.net/npm/screenfull-es6/).
 
 ## Support
 
@@ -122,7 +122,7 @@ export default {
   methods: {
     toggleFullscreen(){
       if (ScreenFull.enabled) {
-      			ScreenFull.toggle();
+        ScreenFull.toggle();
       }
     }
   }
